@@ -12,7 +12,7 @@
   // find all h3s and nest them under their h2s
   var h3s = document.querySelectorAll('h3')
 
-  var isAfter = function(e1, e2) {
+  var isAfter = function (e1, e2) {
     return e1.compareDocumentPosition(e2) & Node.DOCUMENT_POSITION_FOLLOWING;
   }
 
@@ -20,7 +20,7 @@
   var j = 0;
   for (var i = 0; i < h2s.length; i++) {
     var h2 = h2s[i];
-    var nextH2 = h2s[i+1];
+    var nextH2 = h2s[i + 1];
     var ourH3s = [];
     while (h3s[j] && isAfter(h2, h3s[j]) && (!nextH2 || !isAfter(nextH2, h3s[j]))) {
       ourH3s.push({ header: h3s[j] });
@@ -44,7 +44,7 @@
     })
   }
 
-  function createSubMenu (container, headers) {
+  function createSubMenu(container, headers) {
     var subMenu = document.createElement('ul')
     subMenu.className = 'sub-menu'
     container.appendChild(subMenu)
@@ -58,7 +58,7 @@
     })
   }
 
-  function createSubMenuLink (h) {
+  function createSubMenuLink(h) {
     allLinks.push(h)
     var headerLink = document.createElement('li')
     headerLink.innerHTML =
@@ -67,7 +67,7 @@
     return headerLink
   }
 
-  function makeHeaderLinkable (h) {
+  function makeHeaderLinkable(h) {
     var anchor = document.createElement('a')
     anchor.className = 'anchor'
     anchor.href = '#' + h.id
@@ -85,7 +85,7 @@
     h.removeAttribute("id");
   }
 
-  function onLinkClick (e) {
+  function onLinkClick(e) {
     if (document.querySelector('.sub-menu').contains(e.target)) {
       setActive(e.target)
     }
@@ -97,7 +97,7 @@
   window.addEventListener('scroll', updateSidebar)
   window.addEventListener('resize', updateSidebar)
 
-  function updateSidebar () {
+  function updateSidebar() {
     if (scrolling) return
     var doc = document.documentElement
     var top = doc && doc.scrollTop || document.body.scrollTop
@@ -116,7 +116,7 @@
     }
   }
 
-  function setActive (link) {
+  function setActive(link) {
     var previousActive = document.querySelector('.sub-menu .active')
 
     var hash = link.hash;
@@ -145,27 +145,27 @@
 
   // version select
   var currentVersion = location.pathname.match(/^\/(v\d[^\/]+)/)
-  ;[].forEach.call(document.querySelectorAll('.version-select'), function (select) {
-    if (currentVersion) {
-      [].some.call(select.options, function (o) {
-        if (o.value === currentVersion[1]) {
-          o.selected = true
-          return true
-        }
-      })
-    }
-    select.addEventListener('change', function () {
-      var targetPath = '/'
-      if (select.selectedIndex !== 0) {
-        targetPath = '/' + select.value + '/'
+    ;[].forEach.call(document.querySelectorAll('.version-select'), function (select) {
+      if (currentVersion) {
+        [].some.call(select.options, function (o) {
+          if (o.value === currentVersion[1]) {
+            o.selected = true
+            return true
+          }
+        })
       }
-      location.assign(targetPath)
+      select.addEventListener('change', function () {
+        var targetPath = '/'
+        if (select.selectedIndex !== 0) {
+          targetPath = '/' + select.value + '/'
+        }
+        location.assign(targetPath)
+      })
     })
-  })
 
   // fastclick to remove click delay in mobile browsers
   if ('addEventListener' in document) {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       FastClick.attach(document.body);
     }, false);
   }
@@ -173,8 +173,8 @@
   // search toggle
   var nav = document.querySelector('.nav');
   var mobileSearch = document.querySelector('#mobile-search-input');
-  [].forEach.call(document.querySelectorAll('.js-search-toggle'), function(link) {
-    link.addEventListener('click', function() {
+  [].forEach.call(document.querySelectorAll('.js-search-toggle'), function (link) {
+    link.addEventListener('click', function () {
       nav.classList.toggle('search-visible');
       if (nav.classList.contains('search-visible')) {
         mobileSearch.focus();
@@ -182,7 +182,7 @@
     });
   });
 
-  mobileSearch && mobileSearch.addEventListener('keydown', function(event) {
+  mobileSearch && mobileSearch.addEventListener('keydown', function (event) {
     if (event.which === 27) {
       nav.classList.toggle('search-visible', false);
     }
@@ -195,7 +195,7 @@
     });
 
   document.querySelector('.content')
-    .addEventListener('click', function() {
+    .addEventListener('click', function () {
       document.body.classList.remove('sidebar-visible')
     })
 })()
