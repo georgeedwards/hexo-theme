@@ -31,24 +31,14 @@
     <meta name="google-site-verification" content="" />
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,300italic,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<%= config.root || '/' %>style/style.css">
+    <link rel="stylesheet" href="<%= config.root || '/' %>style/tabs.css">
   </head>
   <body class="">
     <%- body %>
     <script src="<%= config.root || '/' %>script/smooth-scroll.min.js"></script>
     <script src="<%= config.root || '/' %>script/main.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
 
     <script>
-      // nectar ninja
-      (function(){
-        var handle = '@meteorjs';
-        var a = document.createElement('script');
-        var m = document.getElementsByTagName('script')[0];
-        a.async = 1;
-        a.src = 'https://nectar.ninja/api/v1/' + handle.slice(1);
-        m.parentNode.insertBefore(a, m);
-      })();
 
      <% if (config.apis && config.apis.ga) { %>
         // Google analytics
@@ -135,5 +125,10 @@
         window.onhashchange = redirect;
       <% } %>
     </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script src="<%= config.root || '/' %>script/code-block.js"></script>
   </body>
 </html>
