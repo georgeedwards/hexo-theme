@@ -15,7 +15,6 @@
       </div>
     <% }) %>
   </div>
-
   <div class="sidebar-content">
     <div class="topcap">
       <span class="title-sidebar"><%- config.title %></span>
@@ -29,18 +28,16 @@
         </span>
       <% } %>
     </div>
-
     <div class="slide-wrapper">
       <div class="toggle_radio">
-        <input type="radio" checked class="toggle_option" id="first_toggle" name="toggle_option" onChange="toggleFrontEndVar('nativescript')">
-        <input type="radio" class="toggle_option" id="second_toggle" name="toggle_option" onChange="toggleFrontEndVar('angular')">
+        <input type="radio" class="toggle_option" id="first_toggle" name="toggle_option" onclick="switchCodeBlock('n');">
+        <input type="radio" class="toggle_option" id="second_toggle" name="toggle_option" onclick="switchCodeBlock('ng');">
         <label for="first_toggle"><p>NativeScript</p></label>
         <label for="second_toggle" style="    margin-left: 110px;
     margin-top: -11px;"><p>Angular</p></label>
         <div class="toggle_option_slider"></div>
       </div>
     </div>
-
     <% if (config.apis && config.apis.docsearch) { %>
     <div class="wrapper-search">
       <div class="input-symbol small round">
@@ -49,7 +46,6 @@
       </div>
       <div class="wrapper-desktop-search-results"></div>
     </div>
-
     <% } %>
     <ul class="toc">
       <% _.each(config.sidebar_categories, function(pages, category) { %>
