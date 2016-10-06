@@ -22,9 +22,10 @@
         <span class="select version-sidebar nochrome">
           <select class="version-select">
             <% config.versions.forEach(function (v) { %>
-              <option value="v<%- v %>"><%- v %></option>
+              <option value="docs/<%- v %>"><%- v %></option>
             <% }) %>
           </select>
+          <i class="icon ion-arrow-down-b"></i>
         </span>
       <% } %>
     </div>
